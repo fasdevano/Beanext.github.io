@@ -53,3 +53,39 @@ const observer = new IntersectionObserver(
 document.querySelectorAll(".stat-card").forEach((card) => {
   observer.observe(card);
 });
+
+// Tambahkan di akhir file main.js
+const WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbzb_-vv3xw3qLDIAIbyvUpCSxvc2cKffBNsfLDj-GKRP2sB1rDiljj66slJdcaVz5Lh/exec";
+
+document
+  .getElementById("beasiswaForm")
+  .addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(WEB_APP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      // Tampilkan modal success
+      document.getElementById("successModal").classList.add("active");
+      e.target.reset();
+    } catch (error) {
+      alert("Terjadi kesalahan. Silakan coba lagi.");
+      console.error(error);
+    }
+  });
+
+// Fungsi close modal
+function closeModal() {
+  document.getElementById("successModal").classList.remove("active");
+}
