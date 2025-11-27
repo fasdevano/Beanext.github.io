@@ -114,14 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Validasi URL Web App
-      if (WEB_APP_URL === 'https://script.google.com/macros/s/AKfycbyUHCA7hROoQ8HgAmOh8MVr_5KgvYq4oHt1T40gVll9FTNeJB-ErWnXSEv8gUlYxxOP/exec') {
-        alert('⚠️ ERROR: URL Web App belum diisi!\n\nSilakan ganti WEB_APP_URL di file main.js dengan URL dari Google Apps Script Anda.');
-        return;
-      }
-      
-      showLoading();
-      
       // Ambil data dari form
       const formData = new FormData(form);
       const data = {};
@@ -291,3 +283,4 @@ if (scrollTopBtn) {
     });
   });
 }
+
